@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'sh \'./scripts/build.sh\''
+        sh './scripts/build.sh'
       }
     }
 
     stage('test') {
       steps {
-        sh 'sh \'./scripts/test.sh\''
+        sh './scripts/test.sh'
       }
     }
 
@@ -19,10 +19,9 @@ pipeline {
       }
     }
 
-    stage('push') {
+    stage('docker-push') {
       steps {
-        sh '''# Docker login using Jenkins credentials (docker_hub_creds)
-docker push akmaral2002/ci-cd-epam'''
+        sh 'docker push akmaral2002/ci-cd-epam'
       }
     }
 
